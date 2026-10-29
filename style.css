@@ -265,3 +265,6 @@ body > main:not(.doc) { padding-top: 4px; }
 .hanrei .card h3 { margin-top: 6px; }
 .hanrei .more-link .cta-btn { padding: 6px 14px; font-size: 13px; border-width: 1px; }
 @media (max-width: 480px) { .hanrei > .hint { display: none; } .switch-btn { font-size: 15px; padding: 7px 16px; } }
+.about { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 20px 0; font-size: 15px; }
+.about h2 { font-size: 1.2rem; margin-top: 0; }
+.about .cta-btn { padding: 8px 16px; font-size: 14px; }
