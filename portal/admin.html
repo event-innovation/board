@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src https://*.supabase.co; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>管理者ページ｜イベント業界健全化機構</title>
+<link rel="stylesheet" href="../style.css?v=mvu1iarq">
+<link rel="stylesheet" href="portal.css">
+</head>
+<body class="portal">
+<main>
+  <h1>管理者ページ</h1>
+  <p id="msg" class="error" role="alert" aria-live="assertive"></p>
+  <section id="login" class="panel-box hidden">
+    <p>管理者のアカウントでログインしてください。</p>
+    <form id="loginForm" novalidate>
+      <label for="email">メールアドレス</label><input type="email" id="email" autocomplete="email">
+      <label for="password">パスワード</label><input type="password" id="password" autocomplete="current-password">
+      <button class="p-btn" type="submit">ログイン</button>
+    </form>
+  </section>
+
+  <div id="app" class="hidden">
+    <section class="panel-box">
+      <h2>1. 弁護士の身元確認</h2>
+      <ol class="hint">
+        <li>日弁連の「弁護士情報検索」（<a href="https://www.nichibenren.or.jp/" target="_blank" rel="noopener">日弁連のサイト</a>から開けます）で、登録番号を入れて検索します。</li>
+        <li>氏名・所属弁護士会・事務所名が、申請と同じか確かめます。</li>
+        <li>検索結果に載っている事務所の電話番号（申請に書かれた番号ではなく）にかけ、ご本人の申請か確かめます。</li>
+        <li>すべて合っていれば「確認済みにする」を押します。メモに確認した日と方法を残します。</li>
+      </ol>
+      <div class="scroll"><table><thead><tr><th>状態</th><th>氏名</th><th>登録番号</th><th>弁護士会</th><th>事務所・電話</th><th>メール</th><th>契約</th><th>メモ・操作</th></tr></thead><tbody id="lawyerRows"></tbody></table></div>
+    </section>
+
+    <section class="panel-box">
+      <h2>2. 相談の登録</h2>
+      <p class="hint">Googleフォームで届いた相談のうち、<strong>「弁護士に見せてよい」に同意があるもの</strong>だけを登録します。相談者の名前・メール・電話・住所や、相談者が分かる細かい日付・金額・役職は、必ず伏せてから書いてください。</p>
+      <form id="tipForm" novalidate>
+        <input type="hidden" id="t_id">
+        <label for="t_ref">受付番号（任意・フォームと照合する用）</label><input type="text" id="t_ref" maxlength="40">
+        <label class="req" for="t_kind">区分</label>
+        <select id="t_kind"><option>会社ー個人</option><option>会社ー会社</option></select>
+        <label class="req" for="t_cat">トラブルの種類</label><input type="text" id="t_cat" maxlength="60" placeholder="例：出演料の未払い">
+        <label for="t_region">地域（大まかに）</label><input type="text" id="t_region" maxlength="40" placeholder="例：関東">
+        <label for="t_period">時期（大まかに）</label><input type="text" id="t_period" maxlength="40" placeholder="例：2026年夏">
+        <label class="req" for="t_title">見出し</label><input type="text" id="t_title" maxlength="120">
+        <label class="req" for="t_summary">要約（一覧に出ます）</label><textarea id="t_summary" rows="2" maxlength="300"></textarea>
+        <label class="req" for="t_details">詳しい内容（伏せたもの）</label><textarea id="t_details" rows="8" maxlength="8000"></textarea>
+        <label for="t_cp">相手方の社名（未確認）</label><input type="text" id="t_cp" maxlength="120">
+        <label for="t_docs">相談者の手元にある資料</label><input type="text" id="t_docs" maxlength="200" placeholder="例：契約書、振込記録">
+        <label for="t_ver">確認の段階</label>
+        <select id="t_ver"><option value="unverified">未確認</option><option value="documents_seen">資料の一部を確認</option><option value="tier_b">調査で確認済み（B）</option></select>
+        <label for="t_resp">相手方の回答（あれば、そのまま）</label><textarea id="t_resp" rows="3" maxlength="4000"></textarea>
+        <label for="t_respon">回答日</label><input type="text" id="t_respon" placeholder="2026-11-01">
+        <label class="req" for="t_consenton">同意を確認した日</label><input type="text" id="t_consenton" placeholder="2026-10-30">
+        <label class="inline big-check"><input type="checkbox" id="t_consent"><span>相談者が「身元を確認した弁護士に見せてよい」に同意している</span></label>
+        <label class="inline big-check"><input type="checkbox" id="t_redact"><span>相談者が分かる情報（名前・連絡先・細かい日付や金額など）を伏せた</span></label>
+        <label class="inline big-check"><input type="checkbox" id="t_pub"><span>弁護士に見せる（公開する）</span></label>
+        <label for="t_status">受付</label>
+        <select id="t_status"><option value="open">受付中</option><option value="closed">受付終了</option></select>
+        <button class="p-btn" type="submit" id="tipSave">保存する</button>
+        <button class="p-btn sub" type="button" id="tipNew">新しく書く</button>
+      </form>
+      <h3>登録済みの相談</h3>
+      <div class="scroll"><table><thead><tr><th>番号</th><th>見出し</th><th>段階</th><th>公開</th><th>受付</th><th></th></tr></thead><tbody id="tipRows"></tbody></table></div>
+    </section>
+
+    <section class="panel-box">
+      <h2>3. 「対応できます」の連絡</h2>
+      <p class="hint">相談者へ、手を挙げた先生の氏名・事務所・ひとことをメールでお伝えし、相談するかどうか、どの先生にするかを相談者に選んでもらいます。先生に相談者の連絡先は伝えません。伝えたら「伝えた」を押します。</p>
+      <div class="scroll"><table><thead><tr><th>相談</th><th>先生</th><th>ひとこと</th><th>日時</th><th></th></tr></thead><tbody id="intRows"></tbody></table></div>
+    </section>
+
+    <section class="panel-box">
+      <h2>4. 設定</h2>
+      <label class="inline big-check"><input type="checkbox" id="gate"><span>閲覧に有料契約を必要にする（法律面の確認が済むまで、オフのままにしてください）</span></label>
+    </section>
+    <p><button class="p-btn sub" id="logout" type="button">ログアウト</button></p>
+  </div>
+</main>
+<script src="vendor/supabase.js"></script>
+<script src="config.js?v=mvu1iarq"></script>
+<script src="admin.js?v=mvu1iarq"></script>
+</body>
+</html>

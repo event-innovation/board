@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src https://*.supabase.co; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>弁護士専用ページ｜イベント業界健全化機構</title>
+<link rel="stylesheet" href="../style.css?v=mvu1iarq">
+<link rel="stylesheet" href="portal.css">
+</head>
+<body class="portal">
+<a class="switch-btn" href="../lawyers.html">弁護士の方へ（ご案内）</a>
+<header class="hero hero-lawyer">
+  <p class="org">弁護士専用ページ</p>
+  <h1>寄せられた相談の閲覧</h1>
+  <p class="hero-sub">身元を確認できた弁護士の先生だけが、相談者が「弁護士に見せてよい」と同意した相談を、名前・連絡先を伏せた形で見られます。閲覧は無料です。</p>
+</header>
+<main>
+  <p id="msg" class="error" role="alert" aria-live="assertive"></p>
+
+  <section id="notReady" class="panel-box hidden">
+    <h2>ただいま準備中です</h2>
+    <p>もうしばらくお待ちください。</p>
+  </section>
+
+  <!-- ログイン・新規登録 -->
+  <section id="authBox" class="panel-box hidden">
+    <div class="tabs" role="tablist">
+      <button type="button" class="p-btn sub" id="tabLogin" role="tab" aria-selected="true">ログイン</button>
+      <button type="button" class="p-btn sub" id="tabSignup" role="tab" aria-selected="false">はじめての方（登録）</button>
+    </div>
+    <form id="authForm" novalidate>
+      <label class="req" for="email">メールアドレス</label>
+      <input type="email" id="email" autocomplete="email" maxlength="200" required>
+      <label class="req" for="password">パスワード（8文字以上）</label>
+      <input type="password" id="password" autocomplete="current-password" minlength="8" maxlength="72" required>
+      <button type="submit" class="p-btn" id="authBtn">ログイン</button>
+    </form>
+    <p class="hint"><a href="#" id="forgot">パスワードを忘れた方</a></p>
+    <p id="authDone" class="ok-msg hidden" role="status"></p>
+  </section>
+
+  <!-- 弁護士情報の登録 -->
+  <section id="registerBox" class="panel-box hidden">
+    <h2>弁護士情報の登録</h2>
+    <p class="hint">日弁連の弁護士情報検索で、登録番号・お名前・所属弁護士会・事務所を照合します。あわせて、検索結果に載っている事務所の電話番号へ、ご本人の登録かどうかを確認のお電話をすることがあります。</p>
+    <form id="regForm" novalidate>
+      <label class="req" for="r_name">お名前（登録上の氏名）</label>
+      <input type="text" id="r_name" maxlength="100" required autocomplete="name">
+      <label class="req" for="r_no">弁護士登録番号（数字）</label>
+      <input type="text" id="r_no" maxlength="6" inputmode="numeric" pattern="[0-9]{4,6}" required>
+      <label class="req" for="r_bar">所属弁護士会</label>
+      <input type="text" id="r_bar" maxlength="50" placeholder="例：東京弁護士会" required>
+      <label class="req" for="r_office">事務所名</label>
+      <input type="text" id="r_office" maxlength="200" required>
+      <label class="req" for="r_tel">事務所の電話番号</label>
+      <input type="tel" id="r_tel" maxlength="30" autocomplete="tel" required>
+      <div class="unverified">
+        <p><strong>閲覧のお約束</strong></p>
+        <ul class="rules">
+          <li>相談の内容は、相談者が「身元を確認した弁護士に見せてよい」と同意したものです。<strong>まだ確かめていない情報</strong>を含みます。</li>
+          <li>見た内容を、受任の検討以外に使ったり、ほかの人に伝えたり、転載・撮影したりしません。</li>
+          <li>相談者や相手方に、直接連絡しようとしません。対応できる場合は「対応できます」を押していただき、相談者がご自分で相談先を選びます。</li>
+          <li>閲覧や「対応できます」に料金はかかりません。当団体は、紹介料・成功報酬・件数に応じた料金を、名目を問わず受け取りません。</li>
+          <li>閲覧の記録を残します。お約束が守られない場合は、閲覧を止めます。</li>
+        </ul>
+      </div>
+      <label class="inline big-check"><input type="checkbox" id="r_agree" required>
+        <span><span class="req-mark">必須</span>上のお約束と<a href="../terms.html" target="_blank" rel="noopener">利用規約</a>・<a href="../privacy.html" target="_blank" rel="noopener">情報の取扱い</a>に同意する</span></label>
+      <button type="submit" class="p-btn" id="regBtn">登録を申請する</button>
+    </form>
+  </section>
+
+  <!-- 確認待ちなど -->
+  <section id="statusBox" class="panel-box hidden">
+    <h2 id="statusTitle"></h2>
+    <p id="statusText"></p>
+  </section>
+
+  <!-- 相談の一覧 -->
+  <section id="tipsBox" class="hidden">
+    <div class="unverified"><strong>ご注意：</strong>ここにある相談は、相談者から寄せられた<strong>未確認の情報</strong>です。当団体が事実だと確かめたものではありません。相手方の回答があるものは、あわせて載せています。</div>
+    <h2>寄せられた相談</h2>
+    <p id="tipsEmpty" class="hint hidden">いま見られる相談はありません。</p>
+    <div id="tipsList"></div>
+  </section>
+
+  <!-- 相談の詳しい内容 -->
+  <section id="tipBox" class="panel-box hidden">
+    <button type="button" class="p-btn sub" id="backBtn">← 一覧へ戻る</button>
+    <div class="unverified"><strong>未確認の情報です。</strong>相談者の話と、相談者の手元の資料の種類をまとめたもので、当団体が事実と確かめたものではありません。</div>
+    <p class="meta" id="tMeta"></p>
+    <h2 id="tTitle"></h2>
+    <h3>相談の内容</h3>
+    <p class="pre" id="tDetails"></p>
+    <p class="meta" id="tCounterpartyWrap">相手方（未確認）：<span id="tCounterparty"></span></p>
+    <p class="meta" id="tDocsWrap">相談者の手元にある資料：<span id="tDocs"></span></p>
+    <h3>相手方の回答</h3>
+    <div class="response pre" id="tResponse"></div>
+    <h3>対応できますか？</h3>
+    <p class="hint">押すと、当団体から相談者に「この先生が対応できます」とお伝えします。相談者の連絡先はお伝えできません。相談するかどうか、どの先生にするかは、相談者が決めます。</p>
+    <label class="opt" for="iMsg">相談者へのひとこと（任意・1000文字まで）</label>
+    <textarea id="iMsg" maxlength="1000" rows="3" placeholder="例：初回の相談は無料です。オンラインでも対応できます。"></textarea>
+    <button type="button" class="p-btn" id="interestBtn">対応できます</button>
+    <button type="button" class="p-btn sub hidden" id="withdrawBtn">取り下げる</button>
+    <p id="iDone" class="ok-msg" role="status"></p>
+  </section>
+
+  <!-- AI顧問サービス（任意・閲覧とは別） -->
+  <section id="billingBox" class="panel-box hidden">
+    <h2>AI顧問サービス（任意）</h2>
+    <p class="hint">相談の閲覧とは別のサービスです。契約してもしなくても、見られる相談や、相談者にお伝えする内容は変わりません。</p>
+    <p id="subState" class="meta"></p>
+    <p><button type="button" class="p-btn" id="paySolo">ひとり法人プラン（14,980円〜／月）</button></p>
+    <p><button type="button" class="p-btn" id="payFirm">弁護士法人プラン（49,800円〜／月）</button></p>
+    <p class="hint" id="payNote">お支払いはStripe（決済サービス）の画面で行います。カード情報は当団体には届きません。</p>
+  </section>
+
+  <p id="logoutWrap" class="hidden"><button type="button" class="p-btn sub" id="logoutBtn">ログアウト</button></p>
+</main>
+<footer class="site-footer">
+  <p>イベント業界健全化機構（任意団体）は民間の団体で、国・自治体などの公的機関ではありません。法律事務の周旋は行いません。</p>
+  <p><a href="../terms.html">利用規約</a>　<a href="../privacy.html">情報の取扱いについて</a></p>
+  <p>お問い合わせ：event.innovation.board@gmail.com</p>
+</footer>
+<script src="vendor/supabase.js"></script>
+<script src="config.js?v=mvu1iarq"></script>
+<script src="app.js?v=mvu1iarq"></script>
+</body>
+</html>
