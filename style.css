@@ -319,3 +319,4 @@ body > main:not(.doc) { padding-top: 4px; }
 @media (max-width: 640px) { .switch-btn { font-size: 11px; padding: 3px 9px; top: 8px; right: 8px; border: 1px solid rgba(255,255,255,.7); background: rgba(255,255,255,.92); box-shadow: none; font-weight: 600; } .hero { padding-top: 34px; } .lp-list { grid-template-columns: 1fr 1fr !important; } }
 h2.q { font-size: 1.65rem; margin: 2px 0 10px; }
 button.big { min-height: 108px; }
+@media (max-width: 640px) { .switch-btn { top: 12px; right: 16px; font-size: 12px; padding: 0 14px; min-height: 32px; display: inline-flex; align-items: center; } .hero { padding-top: 52px; padding-bottom: 12px; } .hero h1 { margin-bottom: 4px; } .hanrei { margin-top: 4px; } }
