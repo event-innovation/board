@@ -387,3 +387,15 @@ form#intake .progress { margin-top: 0; }
   form#intake .progress { margin-bottom: 0; }
 }
 @media (max-width: 640px) { .slogan { line-height: 1.3; margin-top: 2px; } }
+
+/* 「その相談、あきらめないで」だけ手書き風・朱色（Klee One、使う文字だけに絞ったフォント） */
+@font-face { font-family: "SloganHand"; src: url("fonts/slogan.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+.slogan { font-family: "SloganHand", "Klee One", cursive; font-weight: 600; color: #d9452b; letter-spacing: .06em; }
+/* スマホの「もっと事例を見てみる」を小さなボタンに */
+@media (max-width: 640px) {
+  .hanrei-head { align-items: center; gap: 6px; }
+  .hanrei-head h2 { font-size: 15px; white-space: nowrap; }
+  .more-inline { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border: 1.5px solid var(--accent); border-radius: 999px; background: #fff; font-size: 11px; line-height: 1; letter-spacing: -.02em; }
+  .more-inline:active { background: #eef3f8; }
+}
+@media (max-width: 640px) { .slogan { font-size: 19px; letter-spacing: .03em; } }
