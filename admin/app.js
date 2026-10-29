@@ -273,7 +273,13 @@ async function enablePush() {
       cur = await savePush((d) => { d.publicKey = v.publicKey; d.subscriptions = []; });
       store.set("vapid_pending", v.privateKey);
     }
-    const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(cur.publicKey) });
+    const want = b64ToBytes(cur.publicKey);
+    const existing = await reg.pushManager.getSubscription();
+    if (existing) {
+      const have = existing.options && existing.options.applicationServerKey ? new Uint8Array(existing.options.applicationServerKey) : null;
+      if (!have || have.length !== want.length || have.some((b, i) => b !== want[i])) await existing.unsubscribe(); // 鍵が変わったら古い登録を外す
+    }
+    const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: want });
     const j = sub.toJSON();
     await savePush((d) => {
       d.subscriptions = (d.subscriptions || []).filter((s) => s.subscription.endpoint !== j.endpoint);
