@@ -320,3 +320,5 @@ body > main:not(.doc) { padding-top: 4px; }
 h2.q { font-size: 1.65rem; margin: 2px 0 10px; }
 button.big { min-height: 108px; }
 @media (max-width: 640px) { .switch-btn { top: 12px; right: 16px; font-size: 12px; padding: 0 14px; min-height: 32px; display: inline-flex; align-items: center; } .hero { padding-top: 52px; padding-bottom: 12px; } .hero h1 { margin-bottom: 4px; } .hanrei { margin-top: 4px; } }
+.plans { margin-top: 28px; } @media (max-width: 720px) { .plans { row-gap: 26px; } }
+.plans + .hint { margin-top: 14px; }
