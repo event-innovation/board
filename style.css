@@ -314,3 +314,5 @@ body > main:not(.doc) { padding-top: 4px; }
 .lp-list li strong { font-size: 14px; }
 @media (max-width: 480px) { .lp-list li { font-size: 12px; padding: 8px; } .lp-list li strong { font-size: 13px; } }
 .lp-list li { align-content: start; }
+.small-notice { font-size: 12.5px; line-height: 1.65; }
+.small-notice strong { font-size: 14px; }
