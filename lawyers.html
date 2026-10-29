@@ -47,7 +47,7 @@
   </section>
 
   <section class="lp-block" id="contact">
-    <h2>お問い合わせ（弁護士の先生専用）</h2>
+    <h2>お問い合せ・資料請求（弁護士の先生専用）</h2>
     <p class="hint">トラブルのご相談は<a href="index.html">こちら</a>からお願いします。</p>
     <form id="lawyerForm" action="" data-entry="" method="POST" novalidate>
       <div class="hp" aria-hidden="true"><label>空欄のままにしてください<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
@@ -57,6 +57,12 @@
       <input type="text" id="l_office" name="事務所名" maxlength="120" required>
       <label class="req" for="l_email">メールアドレス</label>
       <input type="email" id="l_email" name="メールアドレス" maxlength="200" required autocomplete="email">
+      <p class="opt-title">ご用件</p>
+      <div class="choices">
+        <label><input type="checkbox" name="ご用件" value="資料請求">資料がほしい</label>
+        <label><input type="checkbox" name="ご用件" value="導入の相談（無料）">導入の相談をしたい（無料）</label>
+        <label><input type="checkbox" name="ご用件" value="その他のお問い合わせ">その他のお問い合わせ</label>
+      </div>
       <label class="opt" for="l_pref">所属弁護士会・地域</label>
       <input type="text" id="l_pref" name="所属・地域" maxlength="60" placeholder="例：東京弁護士会">
       <p class="opt-title">ご興味のあること</p>
