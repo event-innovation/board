@@ -59,8 +59,17 @@
     }
     var reply = document.getElementById("reply");
     if (reply.value && !reply.checkValidity()) return fail("メールアドレスをもう一度確認してください。", reply);
+    var box = document.getElementById("agreeBox");
     var agree = document.getElementById("agree");
-    if (!agree.checked) return fail("「同意する」にチェックを入れてください。", agree);
+    if (box.classList.contains("collapsed")) {
+      // 1回目の「送信する」：同意欄を下に伸ばして見せる
+      box.classList.remove("collapsed");
+      box.removeAttribute("aria-hidden");
+      btn.textContent = "同意して送信する";
+      setTimeout(function () { box.scrollIntoView({ behavior: "smooth", block: "center" }); }, 120);
+      return;
+    }
+    if (!agree.checked) return fail("「利用規約と情報の取扱いに同意する」にチェックを入れてください。", agree);
 
     var fd = new FormData(form);
     if (fd.get("_gotcha")) return; // ボット対策
@@ -86,7 +95,7 @@
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = "送信する";
+        btn.textContent = "同意して送信する";
         fail("送信できませんでした。電波のよい所で、もう一度お試しください。");
       });
   });

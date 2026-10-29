@@ -336,3 +336,7 @@ button.big { min-height: 108px; }
 .big-check input { width: 18px; height: 18px; }
 button.send { padding: 12px; font-size: 1rem; }
 .wstep label.opt-btn { margin: 0; } .wstep textarea, #lawyerForm textarea { height: 96px; min-height: 72px; }
+/* 同意欄は「送信する」を押してから下に伸びて出てくる */
+.agree-box { max-height: 640px; overflow: hidden; transition: max-height .45s ease, opacity .45s ease, padding .45s ease, margin .45s ease; }
+.agree-box.collapsed { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; border-width: 0; }
+.agree-box.collapsed { visibility: hidden; }
