@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
 <title>イベント取引に関する資料受付｜イベント業界健全化委員会</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +12,7 @@
 <main>
   <p class="hint">運営：イベント業界健全化委員会（任意団体）<br>当団体は民間の任意団体です。国・自治体などの公的機関や、業界団体の公式な組織ではありません。</p>
   <h1>イベント取引に関する資料受付</h1>
-  <p class="lead">イベントの出店契約や精算をめぐるトラブルについて、当事者の方から資料を非公開でお預かりし、整理するための窓口です。</p>
+  <p class="lead">イベントの出店契約や精算をめぐるトラブルについて、当事者の方から情報を非公開でお預かりし、整理するための窓口です。</p>
 
   <div class="notice">
     <strong>はじめにお読みください</strong>
@@ -19,55 +20,159 @@
       <li>お預かりした内容は「未確認情報」として扱います。特定の人物・企業の不正を認定・公表するための窓口ではありません。</li>
       <li>内容が自動で公開されることはありません。ご本人の意向を確認せずに公開することもありません。</li>
       <li>利用目的は、事実確認と紛争対応の検討です。詳しくは<a href="privacy.html">情報の取扱いについて</a>をご覧ください。</li>
-      <li>住所・身分証・ご家族・社員名簿など、事実確認に必要のない情報は送らないでください。</li>
+      <li>住所・身分証・ご家族・社員名簿など、事実確認に必要のない情報は書かないでください。</li>
       <li>この窓口は法律相談の窓口ではありません。お急ぎの場合や法的な判断が必要な場合は、弁護士や公的な相談窓口にご相談ください。</li>
     </ul>
   </div>
 
-  <h2>提出のしかた</h2>
-  <p>現在はメールでのみ受け付けています。このページには入力フォームはありません。</p>
-  <ol>
-    <li>下のひな形をコピーし、分かる範囲で書いてください。分からない項目は「不明」で構いません。</li>
-    <li>件名を「資料受付」として、<strong>event.innovation.board@gmail.com</strong> 宛てに送ってください。</li>
-    <li>資料は<strong>写し（コピー・写真・PDF）</strong>を添付してください。原本はお手元で保管してください。</li>
-    <li>受け取ったら、受付番号をお知らせします。返信が不要な場合は、ひな形にその旨をお書きください。</li>
-  </ol>
-  <p class="hint">メールは途中の経路で暗号化されない場合があります。口座番号など、事実確認に不要な部分は黒塗りしてから送ってください。</p>
+  <form id="intake" action="" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="資料受付">
+    <div class="hp" aria-hidden="true"><label>空欄のままにしてください<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
-  <label for="template">ひな形</label>
-  <textarea id="template" readonly rows="24">【資料受付】
-1. あなたの立場：出店者本人／出店者側の従業員・関係者／主催者・運営側／業者／その他
-2. 書いている内容は：自分が直接体験したこと／人から聞いたこと（伝聞）／両方
-3. イベント名：
-4. 開催時期（年月）：
-5. 開催地域（都道府県まで・任意）：
-6. 契約の相手（契約書・請求書にある法人名・屋号）：
-   ※担当者個人の氏名は不要です
-7. 相手の立場：主催者／運営委託会社／出店者／業者／不明
-8. 契約の種類と形（書面・電子・口頭）：
-9. 主な取り決め（出店料・歩合率・精算方法・支払条件など）：
-10. お金の向き：受け取る側／支払う側
-11. 請求額・受け取るべき額（円）：　　支払期日：
-12. 実際の入金額・支払額（円）：　　入金日・支払日：
-13. ご自身が見聞きしたこと（日付の順に。推測は「推測ですが」と書き分けてください）：
+    <fieldset>
+      <legend>必須の項目</legend>
 
-14. 人から聞いたこと（伝聞。誰から聞いたかは立場だけで結構です）：
+      <label class="req" for="role">あなたの立場</label>
+      <select id="role" name="立場" required>
+        <option value="">選んでください</option>
+        <option>出店者本人</option>
+        <option>出店者側の従業員・関係者</option>
+        <option>主催者・運営側</option>
+        <option>業者</option>
+        <option>その他</option>
+        <option>回答しない</option>
+      </select>
 
-15. 添付した資料の種類：
-16. 共有について：運営内だけで扱ってほしい／専門家（弁護士等）への相談に使ってよいが事前に確認してほしい／未定
-17. 返信：希望する／不要
-18. 確認：
-   □ 内容が未確認情報として扱われることを理解しました
-   □ 自動で公開されず、本人の意向確認なしに公開されないことを理解しました
-   □ 利用目的が事実確認と紛争対応の検討であることを理解しました
-   □ 相手方の個人の住所・家族・私生活の情報や名簿は書いていません</textarea>
-  <div class="actions"><button type="button" id="copyBtn">ひな形をコピー</button><span id="copyMsg" class="hint" aria-live="polite"></span></div>
+      <label class="req" for="source">書く内容は</label>
+      <select id="source" name="体験か伝聞か" required>
+        <option value="">選んでください</option>
+        <option>自分が直接体験したこと</option>
+        <option>人から聞いたこと（伝聞）</option>
+        <option>両方</option>
+      </select>
 
-  <h2>お問い合わせ・削除のご依頼</h2>
-  <p>イベント業界健全化委員会　<strong>event.innovation.board@gmail.com</strong></p>
-  <p class="hint">提出した内容の削除・訂正・利用停止のご依頼も、こちらで受け付けます。代表者の氏名など運営者に関する事項は、ご請求があれば遅滞なくお知らせします。</p>
-  <p class="hint"><a href="privacy.html">情報の取扱いについて</a>（2026年10月29日 制定）</p>
+      <div class="row">
+        <div>
+          <label class="req" for="event">イベント名</label>
+          <input type="text" id="event" name="イベント名" maxlength="120" required>
+        </div>
+        <div>
+          <label class="req" for="when">開催時期</label>
+          <input type="month" id="when" name="開催時期" required>
+        </div>
+      </div>
+
+      <label class="req" for="what">何があったか</label>
+      <p class="hint">日付の順に、分かる範囲で書いてください。推測は「推測ですが」と書き分けてください。相手は担当者個人の氏名ではなく、契約書や請求書にある会社名・屋号で書いてください。</p>
+      <textarea id="what" name="何があったか" maxlength="5000" rows="7" required></textarea>
+
+      <label class="inline"><input type="checkbox" id="agree" name="確認" value="同意する" required>
+        <span><span class="req-mark">必須</span>内容が未確認情報として扱われること、自動で公開されず本人の意向確認なしに公開されないこと、利用目的が事実確認と紛争対応の検討であることを理解しました。相手方個人の住所・家族・私生活の情報や名簿は書いていません。</span></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>連絡先</legend>
+      <label class="opt" for="reply">返信先メールアドレス</label>
+      <p class="hint">受付のご連絡や、資料（写し）のお願いに使います。書かない場合、こちらからはご連絡できません。</p>
+      <input type="email" id="reply" name="email" maxlength="200" autocomplete="email">
+    </fieldset>
+
+    <details class="more">
+      <summary>詳細を書ける場合</summary>
+      <fieldset>
+        <legend>詳細（すべて任意）</legend>
+
+        <label class="opt" for="area">開催地域（都道府県まで）</label>
+        <input type="text" id="area" name="開催地域" maxlength="20">
+
+        <label class="opt" for="party">契約の相手（契約書・請求書にある法人名・屋号）</label>
+        <input type="text" id="party" name="契約の相手" maxlength="120">
+
+        <div class="row">
+          <div>
+            <label class="opt" for="partyRole">相手の立場</label>
+            <select id="partyRole" name="相手の立場">
+              <option value="">選んでください</option>
+              <option>主催者</option><option>運営委託会社</option><option>出店者</option><option>業者</option><option>不明</option>
+            </select>
+          </div>
+          <div>
+            <label class="opt" for="form">契約の形</label>
+            <select id="form" name="契約の形">
+              <option value="">選んでください</option>
+              <option>書面</option><option>電子</option><option>口頭のみ</option><option>不明</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="opt" for="terms">主な取り決め（出店料・歩合率・精算方法・支払条件など）</label>
+        <textarea id="terms" name="主な取り決め" maxlength="2000" rows="4"></textarea>
+
+        <label class="opt" for="dir">お金の向き</label>
+        <select id="dir" name="お金の向き">
+          <option value="">選んでください</option>
+          <option>受け取る側</option><option>支払う側</option>
+        </select>
+
+        <div class="row">
+          <div>
+            <label class="opt" for="billed">請求額・受け取るべき額（円）</label>
+            <input type="number" id="billed" name="請求額" min="0" step="1" inputmode="numeric">
+          </div>
+          <div>
+            <label class="opt" for="due">支払期日</label>
+            <input type="date" id="due" name="支払期日">
+          </div>
+          <div>
+            <label class="opt" for="paid">実際の入金額・支払額（円）</label>
+            <input type="number" id="paid" name="実際の金額" min="0" step="1" inputmode="numeric">
+          </div>
+          <div>
+            <label class="opt" for="paidOn">入金日・支払日</label>
+            <input type="date" id="paidOn" name="入金日・支払日">
+          </div>
+        </div>
+
+        <label class="opt" for="hearsay">人から聞いたこと（伝聞）</label>
+        <p class="hint">誰から聞いたかは、立場だけで結構です（例：同じイベントの別の出店者）。</p>
+        <textarea id="hearsay" name="伝聞" maxlength="5000" rows="4"></textarea>
+
+        <p class="opt-title">お手元にある資料</p>
+        <div class="choices">
+          <label><input type="checkbox" name="資料" value="契約書・申込書">契約書・申込書</label>
+          <label><input type="checkbox" name="資料" value="規約・募集要項">規約・募集要項</label>
+          <label><input type="checkbox" name="資料" value="請求書・見積書">請求書・見積書</label>
+          <label><input type="checkbox" name="資料" value="領収書・振込記録">領収書・振込記録</label>
+          <label><input type="checkbox" name="資料" value="メール・チャット">メール・チャット</label>
+          <label><input type="checkbox" name="資料" value="写真・動画">写真・動画</label>
+          <label><input type="checkbox" name="資料" value="売上記録・レジデータ">売上記録・レジデータ</label>
+          <label><input type="checkbox" name="資料" value="その他">その他</label>
+        </div>
+        <p class="hint">資料のファイルは、このフォームでは送れません。返信先をお書きいただいた方に、受け取り方法をご案内します。原本はお手元で保管してください。</p>
+
+        <label class="opt" for="share">共有について</label>
+        <select id="share" name="共有の意向">
+          <option value="">選んでください</option>
+          <option>運営内だけで扱ってほしい</option>
+          <option>専門家（弁護士等）への相談に使ってよいが、事前に確認してほしい</option>
+          <option>未定</option>
+        </select>
+      </fieldset>
+    </details>
+
+    <p id="formError" class="error" role="alert" aria-live="assertive"></p>
+    <div class="actions"><button type="submit" id="submitBtn">送信する</button></div>
+  </form>
+
+  <div id="done" class="result hidden" role="status" tabindex="-1">
+    <h2>送信しました</h2>
+    <p>お預かりしました。ありがとうございました。返信先をお書きいただいた場合は、追ってご連絡します。</p>
+  </div>
 </main>
-<script src="copy.js"></script>
+<footer class="site-footer">
+  <p>イベント業界健全化委員会（任意団体）　<a href="privacy.html">情報の取扱いについて</a></p>
+  <p>お問い合わせ・削除のご依頼：event.innovation.board@gmail.com</p>
+</footer>
+<script src="form.js"></script>
 </body>
 </html>
