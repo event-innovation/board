@@ -1,0 +1,18 @@
+# 事例データ（data/cases.json）を変えたPRで、出典・表現のチェックと、ページが作り直されているかを確かめる。
+name: cases-check
+on:
+  pull_request:
+    paths: ["data/cases.json", "tools/gen_cases.py", "cases/**", "index.html"]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 出典・表現のチェック
+        run: python3 tools/gen_cases.py --check
+      - name: ページがデータと一致しているか
+        run: |
+          python3 tools/gen_cases.py
+          git diff --exit-code -- cases index.html || (echo "::error::python3 tools/gen_cases.py を実行して、作り直したページもコミットしてください" && exit 1)
