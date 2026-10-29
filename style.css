@@ -206,3 +206,6 @@ ul.points li { margin: 6px 0; }
 .help-box a { color: var(--accent); }
 .cta { text-align: center; margin: 24px 0; }
 main.doc { font-size: 16px; }
+.yn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.opt-btn.small span { padding: 12px 8px; text-align: center; font-size: 1rem; }
+.contract-q { margin-top: 8px; }

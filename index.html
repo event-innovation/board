@@ -78,12 +78,24 @@
     <section class="wstep hidden" data-step="3">
       <h2 class="q">くわしく教えてください</h2>
       <label class="req" for="event">イベント名・仕事の名前</label>
-      <input type="text" id="event" name="イベント名" maxlength="120" required placeholder="例：〇〇フェス2026">
+      <p class="hint">地域と何のフェスかわかれば、正式名でなくても大丈夫です。</p>
+      <input type="text" id="event" name="イベント名" maxlength="120" required placeholder="例：〇〇市の夏のグルメフェス">
       <label class="req" for="when">いつごろ？</label>
       <input type="text" id="when" name="時期" maxlength="40" required placeholder="例：2026年9月">
       <label class="req" for="what">何があった？</label>
-      <p class="hint">わかる範囲で大丈夫です。相手は会社名で書いてください。</p>
+      <p class="hint">わかる範囲で大丈夫です。</p>
       <textarea id="what" name="何があったか" maxlength="5000" rows="6" required></textarea>
+      <label class="opt" for="names">相手の会社・店長・社長などの名前</label>
+      <p class="hint">わかればできるだけ多く書いてください。事実を確かめるためだけに使い、公開はしません。</p>
+      <textarea id="names" name="相手の名前" maxlength="1000" rows="3" placeholder="例：株式会社〇〇、店長の〇〇さん"></textarea>
+      <fieldset class="plain contract-q" data-kind="b2c" disabled>
+        <p class="opt-title">契約書は正式に締結しましたか？</p>
+        <div class="yn">
+          <label class="opt-btn small"><input type="radio" name="契約書の締結" value="はい"><span>はい</span></label>
+          <label class="opt-btn small"><input type="radio" name="契約書の締結" value="いいえ"><span>いいえ</span></label>
+          <label class="opt-btn small"><input type="radio" name="契約書の締結" value="わからない"><span>わからない</span></label>
+        </div>
+      </fieldset>
       <label class="opt" for="reply">あなたのメールアドレス</label>
       <p class="hint">書くと、こちらから返事ができます。</p>
       <input type="email" id="reply" name="email" maxlength="200" autocomplete="email">
