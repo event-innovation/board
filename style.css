@@ -181,3 +181,28 @@ details.public-help > summary { cursor: pointer; font-weight: 700; }
 details.more { margin-top: 16px; }
 /* 書体：弁護士ドットコムと同じ指定（日本語の字形で表示されるようにする） */
 body, button, input, select, textarea { font-family: Arial, "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif; }
+
+/* 1分で読める業界判決 */
+.hanrei { margin: 24px 0 8px; }
+.hanrei h2 { font-size: 1.35rem; margin-bottom: 4px; }
+a.case-card { display: block; color: inherit; text-decoration: none; }
+a.case-card:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.thumb.t4 { background: #f6e8ee; } .thumb.t5 { background: #efeaf6; }
+.th-genre { font-size: 12px; color: var(--muted); }
+.th-num { font-size: 26px; }
+.more-link { text-align: center; margin: 8px 0 0; }
+.cta-btn { display: inline-block; padding: 14px 22px; border-radius: 12px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; }
+.secondary-btn { background: #fff; color: var(--accent); border: 2px solid var(--accent); }
+.case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+main.case h1 { font-size: 1.4rem; line-height: 1.5; }
+.case-kind { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 10px; margin: 8px 0 0; }
+main.case .thumb { border-radius: 12px; margin: 12px 0; height: 150px; }
+ul.points { padding-left: 1.2em; font-size: 1.05rem; }
+ul.points li { margin: 6px 0; }
+.lesson { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 10px; padding: 12px 14px; font-weight: 700; }
+.help-box { background: #f6e8ee; border: 1px solid #e3c3d0; border-radius: 10px; padding: 14px 18px; margin: 20px 0; }
+.help-box h2 { font-size: 1.1rem; margin-top: 0; }
+.help-box ul { padding-left: 1.2em; margin: 0; }
+.help-box a { color: var(--accent); }
+.cta { text-align: center; margin: 24px 0; }
+main.doc { font-size: 16px; }

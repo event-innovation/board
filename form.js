@@ -97,6 +97,7 @@
     var card = car.querySelector(".card");
     car.scrollBy({ left: dir * (card ? card.getBoundingClientRect().width + 16 : car.clientWidth), behavior: "smooth" });
   }
-  document.getElementById("prevCase").addEventListener("click", function () { slide(-1); });
-  document.getElementById("nextCase").addEventListener("click", function () { slide(1); });
+  var prev = document.getElementById("prevCase"), next = document.getElementById("nextCase");
+  if (prev && car) prev.addEventListener("click", function () { slide(-1); });
+  if (next && car) next.addEventListener("click", function () { slide(1); });
 })();
