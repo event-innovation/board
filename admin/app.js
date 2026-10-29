@@ -267,6 +267,8 @@ async function enablePush() {
     const reg = await navigator.serviceWorker.ready;
     let cur = (await getJson(AGENT_REPO, "state/push.json")).data || {};
     if (!cur.publicKey) {
+      const old = await reg.pushManager.getSubscription();
+      if (old) await old.unsubscribe(); // 鍵を作り直すときは古い登録を外す
       const v = await makeVapid();
       cur = await savePush((d) => { d.publicKey = v.publicKey; d.subscriptions = []; });
       store.set("vapid_pending", v.privateKey);
@@ -288,8 +290,11 @@ function showKeyStep() {
   box.classList.toggle("hidden", !k);
   if (!k) return;
   box.innerHTML = `<p><b>最後に1回だけ：</b>通知を送るための鍵を GitHub に登録します。</p>
-    <ol class="steps"><li>「鍵をコピー」を押す</li><li>「登録ページを開く」を押し、Name に <b>VAPID_PRIVATE_KEY</b>、Secret に貼り付けて「Add secret」</li><li>戻って「登録した」を押す</li></ol>
-    <div class="row"><button data-key="copy">鍵をコピー</button><a class="btn" href="https://github.com/${AGENT_REPO}/settings/secrets/actions/new" target="_blank" rel="noopener">登録ページを開く</a></div>
+    <ol class="steps"><li>「登録ページを開く」を押す（すでに VAPID_PRIVATE_KEY があるときは、その鉛筆マークから開く）</li>
+      <li><b>Name</b> 欄に <code>VAPID_PRIVATE_KEY</code> と入力（すでにあるときは不要）</li>
+      <li>ここに戻って「鍵をコピー」を押し、<b>Secret</b> 欄に貼り付けて保存</li><li>戻って「登録した」を押す</li></ol>
+    <p class="note">Secret 欄に入れる鍵（43文字）：<br><code class="key">${esc(k)}</code></p>
+    <div class="row"><button data-key="copy">鍵をコピー</button><a class="btn" href="https://github.com/${AGENT_REPO}/settings/secrets/actions" target="_blank" rel="noopener">登録ページを開く</a></div>
     <button data-key="done" class="primary big">登録した</button>`;
 }
 document.addEventListener("click", async (e) => {
