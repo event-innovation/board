@@ -52,7 +52,7 @@
     e.preventDefault();
     err.textContent = "";
     if (!ready) return;
-    var checks = [["event", "イベント名"], ["when", "いつごろ"], ["what", "何があった"]];
+    var checks = [["event", "イベント名"], ["what", "いつごろ、何があった"]];
     for (var i = 0; i < checks.length; i++) {
       var el = document.getElementById(checks[i][0]);
       if (!el.value.trim()) return fail("「" + checks[i][1] + "」を書いてください。", el);
