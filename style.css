@@ -340,3 +340,8 @@ button.send { padding: 12px; font-size: 1rem; }
 .agree-box { max-height: 640px; overflow: hidden; transition: max-height .45s ease, opacity .45s ease, padding .45s ease, margin .45s ease; }
 .agree-box.collapsed { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; border-width: 0; }
 .agree-box.collapsed { visibility: hidden; }
+#sponsorForm input[type=text], #sponsorForm input[type=email], #sponsorForm input[type=tel] { width: 100%; box-sizing: border-box; font-size: 16px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+#sponsorForm label { font-size: 14px; margin: 8px 0 3px; }
+#sponsorForm .big-check { margin: 14px 0 6px; }
+#sponsorForm { margin-top: 12px; }
+#sponsorForm input[type=tel] { font: inherit; font-size: 16px; }

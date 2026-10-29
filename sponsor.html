@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; frame-src https://docs.google.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://docs.google.com; form-action https://docs.google.com; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
 <title>スポンサーのお申し込み｜イベント業界健全化委員会</title>
-<link rel="stylesheet" href="style.css?v=mvtzuosm">
+<link rel="stylesheet" href="style.css?v=mvu01dof">
 </head>
 <body>
 <main class="doc">
@@ -14,16 +14,36 @@
   <h1>スポンサーのお申し込み</h1>
   <div class="sponsor-msg">
     <p>主催・事業者・ご来場者様がリスクなく安全に安心して続けられるイベント業界を目指して。</p>
-    <p>サービスの認知を目的として少額恐縮ですが、協賛をさせていただきます。</p>
+    <p>サービスの認知を目的として、少額にて恐縮ではありますが、ご協賛をさせていただきます。</p>
   </div>
-  <div class="embed-form">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd8JWhKz_g-lfadJhrBU4WnDNqJhZU-rFSiTOwXCaucIsr6EQ/viewform?embedded=true" title="スポンサーのお申し込みフォーム" loading="lazy">読み込んでいます…</iframe>
+  <form id="sponsorForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd8JWhKz_g-lfadJhrBU4WnDNqJhZU-rFSiTOwXCaucIsr6EQ/formResponse" data-entry="entry.921355361" method="POST" novalidate>
+    <div class="hp" aria-hidden="true"><label>空欄のままにしてください<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+    <label class="req" for="s_name">ご担当者名</label>
+    <input type="text" id="s_name" name="ご担当者名" maxlength="60" required autocomplete="name">
+    <label class="req" for="s_tel">電話番号</label>
+    <input type="tel" id="s_tel" name="電話番号" maxlength="20" required autocomplete="tel" placeholder="例：03-1234-5678">
+    <label class="req" for="s_email">メールアドレス</label>
+    <input type="email" id="s_email" name="メールアドレス" maxlength="200" required autocomplete="email">
+    <label class="req" for="s_event">イベント名</label>
+    <input type="text" id="s_event" name="イベント名" maxlength="120" required>
+    <label class="req" for="s_host">主催会社名</label>
+    <input type="text" id="s_host" name="主催会社名" maxlength="120" required>
+    <label class="opt" for="s_office">事務局・制作会社名</label>
+    <input type="text" id="s_office" name="事務局・制作会社名" maxlength="120">
+    <label class="inline big-check"><input type="checkbox" id="s_agree" name="同意" value="同意" required>
+      <span><span class="req-mark">必須</span><a href="privacy.html" target="_blank" rel="noopener">情報の取扱い</a>に同意する</span></label>
+    <p id="sponsorError" class="error" role="alert" aria-live="assertive"></p>
+    <button type="submit" id="sponsorSubmit" class="send">送信する</button>
+  </form>
+  <div id="sponsorDone" class="result hidden" role="status" tabindex="-1">
+    <h2>✅ 送信しました</h2>
+    <p>ありがとうございました。担当より、ご連絡します。</p>
   </div>
-  <p class="hint">フォームが表示されない場合は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSd8JWhKz_g-lfadJhrBU4WnDNqJhZU-rFSiTOwXCaucIsr6EQ/viewform" target="_blank" rel="noopener">こちらから開いてください</a>。</p>
 </main>
 <footer class="site-footer">
   <p>イベント業界健全化委員会（任意団体）　<a href="terms.html">利用規約</a>　<a href="privacy.html">情報の取扱いについて</a></p>
   <p>お問い合わせ：event.innovation.board@gmail.com</p>
 </footer>
+<script src="sponsor.js?v=mvu01dof"></script>
 </body>
 </html>
