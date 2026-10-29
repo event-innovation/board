@@ -403,3 +403,8 @@ form#intake .progress { margin-top: 0; }
 @font-face { font-family: "SloganHand2"; src: url("fonts/slogan.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 .slogan { font-family: "SloganHand2", cursive; font-weight: 400; letter-spacing: .02em; }
 @media (max-width: 640px) { .slogan { letter-spacing: .02em; } }
+
+/* FVの左上の団体名 */
+.hero { position: relative; }
+.site-name { position: absolute; top: 18px; left: 20px; margin: 0; color: #fff; font-size: 15px; font-weight: 800; letter-spacing: .06em; opacity: .95; }
+@media (max-width: 640px) { .site-name { top: 12px; left: 16px; font-size: 13px; line-height: 32px; } }
