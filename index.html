@@ -129,10 +129,11 @@
     <div class="agree-box">
       <label class="inline"><input type="checkbox" id="agree" name="同意" value="利用規約と情報の取扱いに同意" required>
         <span><span class="req-mark">必須</span><a href="terms.html" target="_blank" rel="noopener">利用規約</a>と<a href="privacy.html" target="_blank" rel="noopener">情報の取扱い</a>に同意します</span></label>
-      <fieldset class="plain lawyer-consent hidden" disabled>
-        <label class="inline"><input type="checkbox" id="lawyerOk" name="弁護士への共有" value="提携弁護士への共有に同意">
-          <span><span class="opt-mark">任意</span>弁護士への相談を希望します。当団体の提携弁護士に、この内容と返信先を共有することに同意します。</span></label>
-      </fieldset>
+      <div class="lawyer-consent">
+        <label class="inline"><input type="checkbox" id="lawyerWish" name="弁護士の紹介" value="希望する">
+          <span><span class="opt-mark">任意</span>イベント業界に詳しい弁護士の紹介を希望する（相談だけの場合料金はかからない弁護士しか紹介しません）</span></label>
+        <p class="hint">紹介できる弁護士の準備が整い次第、返信先にご連絡します。弁護士に内容を伝える前に、あらためて同意をいただきます。</p>
+      </div>
       <p class="hint">送られた内容がそのまま公開されることはありません。調査で事実と確認できたことだけを、個人が分からない形で公開する場合があります。</p>
     </div>
 
@@ -144,12 +145,6 @@
     <h2>送信しました</h2>
     <p>お預かりしました。ありがとうございました。返信先を書いていただいた場合は、追ってご連絡します。</p>
   </div>
-
-  <aside class="lawyer-box">
-    <h2>弁護士に相談したい方 <span class="badge-wait">提携弁護士 募集中</span></h2>
-    <p>当団体は法律相談はできませんが、ご希望の方を提携弁護士におつなぎする仕組みを準備しています。提携弁護士が決まるまでは、下の<a href="https://www.houterasu.or.jp/" target="_blank" rel="noopener">法テラス</a>などの公的な窓口をご利用ください。</p>
-    <p class="hint">弁護士の先生へ：掲載をご希望の方は、ページ下部のお問い合わせ先までご連絡ください。いただくのは定額の月額掲載料のみで、紹介料・成功報酬など、案件ごとの費用は一切いただきません。</p>
-  </aside>
 
   <aside class="public-help">
     <h2>急ぎの方・公的な相談先</h2>
