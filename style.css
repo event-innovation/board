@@ -408,3 +408,8 @@ form#intake .progress { margin-top: 0; }
 .hero { position: relative; }
 .site-name { position: absolute; top: 18px; left: 20px; margin: 0; color: #fff; font-size: 15px; font-weight: 800; letter-spacing: .06em; opacity: .95; }
 @media (max-width: 640px) { .site-name { top: 12px; left: 16px; font-size: 13px; line-height: 32px; } }
+
+/* ロゴ（紺の背景なので白版） */
+.site-name { display: flex; align-items: center; gap: 8px; }
+.site-name img { width: 30px; height: 30px; flex: none; }
+@media (max-width: 640px) { .site-name { gap: 6px; } .site-name img { width: 26px; height: 26px; } }
