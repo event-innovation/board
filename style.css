@@ -146,3 +146,9 @@ button.send { width: 100%; padding: 16px; font-size: 1.1rem; font-weight: 700; b
 .th-num { font-size: 28px; font-weight: 800; color: var(--danger); line-height: 1.2; }
 .th-status { font-size: 12px; border-radius: 999px; padding: 0 10px; background: #fff; border: 1px solid var(--danger); color: var(--danger); }
 .th-status.done { border-color: var(--ok); color: var(--ok); }
+.opt-mark { display: inline-block; margin-right: 6px; font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; vertical-align: 2px; }
+.lawyer-consent { margin-top: 8px; }
+.lawyer-box { background: #eef3f8; border: 1px solid #c9d8e8; border-radius: 10px; padding: 16px 18px; margin: 28px 0 0; }
+.lawyer-box h2 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.lawyer-box a { color: var(--accent); }
+.badge-wait { font-size: 12px; font-weight: 600; background: #fff; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 10px; }
