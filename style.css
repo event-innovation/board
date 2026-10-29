@@ -152,3 +152,5 @@ button.send { width: 100%; padding: 16px; font-size: 1.1rem; font-weight: 700; b
 .lawyer-box h2 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .lawyer-box a { color: var(--accent); }
 .badge-wait { font-size: 12px; font-weight: 600; background: #fff; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 10px; }
+/* サムネイルの文字：弁護士ドットコム本文と同じ書体の太字 */
+.thumb, .thumb span { font-family: Arial, "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif; font-weight: 700; }
