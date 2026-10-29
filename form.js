@@ -1,5 +1,5 @@
 "use strict";
-// 区分ボタンでフォームを切り替え、入力チェックをして受付先（Formspree）へ送る。
+// 区分ボタンでフォームを切り替え、入力チェックをして、内容を1つの文章にまとめてGoogleフォームへ送る。
 (function () {
   var form = document.getElementById("intake");
   var err = document.getElementById("formError");
@@ -7,7 +7,8 @@
   var done = document.getElementById("done");
   var kindInput = document.getElementById("kind");
   var subject = document.getElementById("subject");
-  var ready = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(form.getAttribute("action") || "");
+  var entry = form.getAttribute("data-entry") || "";
+  var ready = /^https:\/\/docs\.google\.com\/forms\/d\/e\/[A-Za-z0-9_-]+\/formResponse$/.test(form.getAttribute("action") || "") && /^entry\.\d+$/.test(entry);
   var LABELS = { b2b: "会社ー会社", b2c: "会社ー個人" };
 
   function fail(msg, el) { err.textContent = msg; if (el) el.focus(); }
@@ -53,9 +54,20 @@
 
     btn.disabled = true;
     btn.textContent = "送信しています…";
-    fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
-      .then(function (r) {
-        if (!r.ok) throw new Error(String(r.status));
+    // 入力された項目を「項目名：値」の形で1つの文章にまとめる
+    var fd = new FormData(form), lines = [], seen = {};
+    fd.forEach(function (v, k) {
+      if (k === "_gotcha" || k === "_subject" || !String(v).trim()) return;
+      if (seen[k] !== undefined) { lines[seen[k]] += "、" + v; return; }
+      seen[k] = lines.length;
+      lines.push("【" + k + "】" + v);
+    });
+    if (fd.get("_gotcha")) return; // ボット対策
+    var body = new URLSearchParams();
+    body.append(entry, lines.join("\n"));
+    // Googleフォームは結果を読み取れない（no-cors）ため、通信が成功すれば受付とみなす
+    fetch(form.action, { method: "POST", mode: "no-cors", body: body })
+      .then(function () {
         form.reset();
         form.classList.add("hidden");
         document.querySelector(".choose").parentNode.classList.add("hidden");
