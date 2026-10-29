@@ -141,3 +141,8 @@ button.send { width: 100%; padding: 16px; font-size: 1.1rem; font-weight: 700; b
 .thumb.t1 { background: #e7eef8; } .thumb.t2 { background: #e6f2ea; } .thumb.t3 { background: #f3ece2; }
 .carousel-nav { display: flex; justify-content: center; gap: 12px; }
 .carousel-nav button { width: 44px; height: 44px; padding: 0; font-size: 22px; border-radius: 50%; }
+.thumb { flex-direction: column; gap: 2px; font-size: 14px; }
+.th-cat { font-weight: 700; color: var(--text); }
+.th-num { font-size: 28px; font-weight: 800; color: var(--danger); line-height: 1.2; }
+.th-status { font-size: 12px; border-radius: 999px; padding: 0 10px; background: #fff; border: 1px solid var(--danger); color: var(--danger); }
+.th-status.done { border-color: var(--ok); color: var(--ok); }
