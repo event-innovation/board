@@ -399,3 +399,7 @@ form#intake .progress { margin-top: 0; }
   .more-inline:active { background: #eef3f8; }
 }
 @media (max-width: 640px) { .slogan { font-size: 19px; letter-spacing: .03em; } }
+/* 手書き文字を太めのYusei Magicに変更 */
+@font-face { font-family: "SloganHand2"; src: url("fonts/slogan.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+.slogan { font-family: "SloganHand2", cursive; font-weight: 400; letter-spacing: .02em; }
+@media (max-width: 640px) { .slogan { letter-spacing: .02em; } }
