@@ -36,3 +36,4 @@ label { display: block; margin: 12px 0; } input { display: block; width: 100%; m
 table { width: 100%; border-collapse: collapse; } th, td { padding: 8px 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: normal; } td { text-align: right; font-weight: bold; }
 .hist { margin: 4px 0; } .hist a { color: inherit; }
 .body { font-size: 14px; }
+.key { word-break: break-all; font-size: 13px; }
