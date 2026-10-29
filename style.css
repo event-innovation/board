@@ -209,3 +209,21 @@ main.doc { font-size: 16px; }
 .yn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .opt-btn.small span { padding: 12px 8px; text-align: center; font-size: 1rem; }
 .contract-q { margin-top: 8px; }
+
+/* 右上の切り替えボタン・弁護士向けページ */
+.switch-btn { position: absolute; top: 12px; right: 12px; z-index: 5; background: #fff; color: var(--accent); border: 2px solid #fff; border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+.switch-btn:hover { background: #eef3f8; }
+.hero { padding-top: 56px; }
+.hero-lawyer { background: linear-gradient(135deg, #3b3b3b, #1f2328); }
+.lp-block { margin: 28px 0; }
+.lp-block h2 { font-size: 1.3rem; }
+.lp-list { list-style: none; padding: 0; display: grid; gap: 10px; }
+.lp-list li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; }
+.price { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .price { grid-template-columns: 1fr; } }
+.price-card { background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 14px; text-align: center; }
+.price-card.free { border-color: var(--ok); }
+.price-label { font-weight: 700; margin: 0; }
+.price-num { font-size: 1.8rem; font-weight: 800; margin: 4px 0; color: var(--accent); }
+.price-card.free .price-num { color: var(--ok); }
+#lawyerForm input[type=text], #lawyerForm input[type=email], #lawyerForm textarea { font-size: 17px; padding: 12px; }

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://docs.google.com; form-action https://docs.google.com; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<title>弁護士へのAI支援事業｜イベント業界健全化委員会</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="switch-btn" href="index.html">お困りの方へ</a>
+<header class="hero hero-lawyer">
+  <p class="org">イベント業界健全化委員会　弁護士へのAI支援事業</p>
+  <h1>AIの力で、<br>低い成功報酬でも<br>戦える弁護士に。</h1>
+  <p class="hero-sub">イベント業界のトラブルは、少額で手間のかかる案件が多く、引き受け手が足りません。<br>AIで事務作業を軽くし、こうした案件にも取り組める体制づくりをお手伝いします。</p>
+</header>
+
+<main>
+  <section class="lp-block">
+    <h2>できること</h2>
+    <ul class="lp-list">
+      <li><strong>📄 書面の下書き</strong><span>内容証明・通知書・準備書面などの下書きをAIで作る流れを整えます。</span></li>
+      <li><strong>🗂️ 証拠・時系列の整理</strong><span>LINE・メール・振込記録などを読み込み、時系列表にまとめる仕組みをつくります。</span></li>
+      <li><strong>🔎 調べものの補助</strong><span>法令や公開されている裁判例を探す作業を、AIで速くします。</span></li>
+      <li><strong>📥 相談受付の整理</strong><span>相談の内容を、面談前に要点メモにする仕組みをつくります。</span></li>
+    </ul>
+    <p class="hint">AIの出力は下書きです。最終的な判断と確認は、必ず弁護士の先生ご自身で行っていただきます。守秘義務に配慮した使い方（入力してよい情報の決め方など）もあわせてご案内します。</p>
+  </section>
+
+  <section class="lp-block">
+    <h2>料金</h2>
+    <div class="price">
+      <div class="price-card free"><p class="price-label">導入のご相談・初期設定</p><p class="price-num">無料</p><p class="hint">いまの業務を伺い、AIをどこに使えるかをご提案して、使い始めるまでの設定をお手伝いします。</p></div>
+      <div class="price-card"><p class="price-label">導入後の継続サポート</p><p class="price-num">月額制</p><p class="hint">使い方の相談、新しい使い道の追加、運用の見直しを毎月行います。料金はお問い合わせ時にご案内します。</p></div>
+    </div>
+    <p class="hint">導入のご相談だけで終わっても、費用はかかりません。</p>
+  </section>
+
+  <section class="lp-block notice">
+    <strong>弁護士のご紹介とは、まったく別のサービスです</strong>
+    <ul>
+      <li>このサービスの契約の有無や内容によって、当団体が相談者に弁護士を紹介するかどうか・どの先生を紹介するかが変わることは一切ありません。</li>
+      <li>月額料金は、AI導入支援の対価です。案件の紹介や受任の件数・結果に応じた金銭は、名目を問わず一切いただきません。</li>
+      <li>特定の成果（受任件数・売上・勝訴など）を保証するものではありません。</li>
+    </ul>
+  </section>
+
+  <section class="lp-block" id="contact">
+    <h2>お問い合わせ（弁護士の先生専用）</h2>
+    <p class="hint">トラブルのご相談は<a href="index.html">こちら</a>からお願いします。</p>
+    <form id="lawyerForm" action="" data-entry="" method="POST" novalidate>
+      <div class="hp" aria-hidden="true"><label>空欄のままにしてください<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+      <label class="req" for="l_name">お名前</label>
+      <input type="text" id="l_name" name="お名前" maxlength="60" required>
+      <label class="req" for="l_office">事務所名</label>
+      <input type="text" id="l_office" name="事務所名" maxlength="120" required>
+      <label class="req" for="l_email">メールアドレス</label>
+      <input type="email" id="l_email" name="メールアドレス" maxlength="200" required autocomplete="email">
+      <label class="opt" for="l_pref">所属弁護士会・地域</label>
+      <input type="text" id="l_pref" name="所属・地域" maxlength="60" placeholder="例：東京弁護士会">
+      <p class="opt-title">ご興味のあること</p>
+      <div class="choices">
+        <label><input type="checkbox" name="興味" value="書面の下書き">書面の下書き</label>
+        <label><input type="checkbox" name="興味" value="証拠・時系列の整理">証拠・時系列の整理</label>
+        <label><input type="checkbox" name="興味" value="調べものの補助">調べものの補助</label>
+        <label><input type="checkbox" name="興味" value="相談受付の整理">相談受付の整理</label>
+      </div>
+      <label class="opt" for="l_msg">ご質問・ご要望</label>
+      <textarea id="l_msg" name="ご質問" maxlength="3000" rows="4"></textarea>
+      <label class="inline big-check"><input type="checkbox" id="l_agree" name="同意" value="同意" required>
+        <span><span class="req-mark">必須</span><a href="privacy.html" target="_blank" rel="noopener">情報の取扱い</a>に同意する</span></label>
+      <p id="lawyerError" class="error" role="alert" aria-live="assertive"></p>
+      <button type="submit" id="lawyerSubmit" class="send">送信する</button>
+    </form>
+    <div id="lawyerDone" class="result hidden" role="status" tabindex="-1">
+      <h2>✅ 送信しました</h2>
+      <p>ありがとうございました。担当より、メールでご連絡します。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>イベント業界健全化委員会（任意団体）は民間の団体で、国・自治体などの公的機関ではありません。</p>
+  <p><a href="terms.html">利用規約</a>　<a href="privacy.html">情報の取扱いについて</a></p>
+  <p>お問い合わせ：event.innovation.board@gmail.com</p>
+</footer>
+<script src="lawyer.js"></script>
+</body>
+</html>
